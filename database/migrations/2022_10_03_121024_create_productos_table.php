@@ -17,7 +17,11 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('tipo');
             $table->string('descripcion');
+<<<<<<< HEAD
             $table->string('imagen');
+=======
+            $table->string('imagen')->nullable();
+>>>>>>> 318dc06 (dayron)
             $table->double('precio');
             $table->integer('existencia');
             $table->timestamps();

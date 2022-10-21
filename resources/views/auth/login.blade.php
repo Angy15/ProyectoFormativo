@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -27,11 +28,45 @@
                 <x-label for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
+=======
+@extends('layouts.login')
+
+@section('content')
+{{-- <img src="{{ asset('images/maiz.jpg') }}" alt="logo" class="logo position-absolute top-3 start-50 translate-middle mt-1"> --}}
+<div class="container">
+    <div class="content">
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+    
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+    
+            <!-- Email Address -->
+            <div>
+
+                <label for="email" :value="__('Email')">Email:</label>
+                <br>
+                <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus>
+            </div>
+    
+            <!-- Password -->
+            <div class="mt-4">
+                <label for="password" :value="__('Password')">Contraseña:</label>
+                <br>
+                <input id="password" class="block mt-1 w-full"
+>>>>>>> 318dc06 (dayron)
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 318dc06 (dayron)
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
@@ -39,13 +74,18 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 318dc06 (dayron)
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+<<<<<<< HEAD
 
                 <x-button class="ml-3">
                     {{ __('Log in') }}
@@ -54,3 +94,19 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+=======
+    
+                <button class="btn btn-primary">
+                    {{ __('Log in') }}
+                </button>
+            </div>
+        </form>
+
+    </div>
+    
+</div>
+    
+@endsection
+    
+    
+>>>>>>> 318dc06 (dayron)

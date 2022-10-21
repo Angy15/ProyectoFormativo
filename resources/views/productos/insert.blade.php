@@ -3,7 +3,11 @@
 @section('titulo', 'Nuevo producto')
 @section('content')
     
+<<<<<<< HEAD
     <form action="{{ route('productos.store') }}" method="post" class="needs-validation" novalidate>
+=======
+    <form action="{{ route('productos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+>>>>>>> 318dc06 (dayron)
         @csrf 
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" name="tipo" placeholder="tipo" required>
@@ -14,8 +18,13 @@
             <label for="descripcion">Descripción</label>
         </div>
         <div class="form-floating mb-3">
+<<<<<<< HEAD
             <input type="text" class="form-control" id="img" name="img" placeholder="img">
             <label for="img">Ruta de imagen</label>
+=======
+            <label for="imagen"></label>
+            <input type="file" class="form-control" id="imagen" name="imagen" placeholder="imagen">
+>>>>>>> 318dc06 (dayron)
         </div>
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" required>

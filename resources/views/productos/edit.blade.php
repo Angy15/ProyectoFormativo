@@ -4,7 +4,11 @@
 
 @section('content')
 
+<<<<<<< HEAD
 <form action="{{ route('productos.update', $producto->id) }}" method="post" class="needs-validation" novalidate>
+=======
+<form action="{{ route('productos.update', $producto->id) }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+>>>>>>> 318dc06 (dayron)
         @method('PUT')
         @csrf 
         <div class="form-floating mb-3">
@@ -16,8 +20,15 @@
             <label for="descripcion">Descripción</label>
         </div>
         <div class="form-floating mb-3">
+<<<<<<< HEAD
             <input type="text" class="form-control" id="img" name="img" placeholder="img" value="{{ $producto->imagen }}">
             <label for="img">Ruta de imagen</label>
+=======
+            @if(@isset($producto->imagen))
+                <img src="{{ asset('storage'). '/'. $producto->imagen }}" alt="imagen" class="img-fluid img-miniatura" width="120px">  
+            @endif
+            <input type="file" class="form-control" id="imagen" name="imagen">
+>>>>>>> 318dc06 (dayron)
         </div>
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" value="{{ $producto->precio }}" required>
