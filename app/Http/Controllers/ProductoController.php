@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use Gate;
-=======
 use Illuminate\Support\Facades\Storage;
 use Gate;
 use Auth;
->>>>>>> 318dc06 (dayron)
 
 class ProductoController extends Controller
 {
@@ -56,15 +52,6 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
-<<<<<<< HEAD
-        $tipo = $request->tipo;
-        $descripcion = $request->descripcion;
-        $img = $request->img;
-        $precio = $request->precio;
-        $existencia = $request->existencia;
-
-        Producto::create($request->all());
-=======
         // $tipo = $request->tipo;
         // $descripcion = $request->descripcion;
         // $img = $request->img;
@@ -78,7 +65,6 @@ class ProductoController extends Controller
 
         Producto::insert($datosProductos);
         // Producto::create($request->all());
->>>>>>> 318dc06 (dayron)
         return redirect()->route('productos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
 
         
@@ -93,17 +79,10 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
-        if(Gate::denies('administrador'))
-        {
-            return redirect()->route('productos.index');
-        }
-=======
         // if(Gate::denies('administrador'))
         // {
         //     return redirect()->route('productos.index');
         // }
->>>>>>> 318dc06 (dayron)
         //
         $producto = Producto::findOrFail($id);
         return view('productos.show', compact('producto'));
@@ -118,13 +97,10 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
-<<<<<<< HEAD
-=======
         if(Gate::denies('administrador'))
         {
             return redirect()->route('productos.index');
         }
->>>>>>> 318dc06 (dayron)
         $producto = Producto::findOrFail($id);
         return view('productos.edit', compact('producto'));
     }
@@ -140,10 +116,6 @@ class ProductoController extends Controller
     {
         //
         $producto = Producto::findOrFail($id);
-<<<<<<< HEAD
-
-        $producto->update($request->all());
-=======
         $datosProductos = $request->except(['_token', '_method']);
         if($request->hasFile('imagen'))
         {
@@ -153,7 +125,6 @@ class ProductoController extends Controller
 
         // $producto->update($request->all());
         Producto::where('id', $id)->update($datosProductos);
->>>>>>> 318dc06 (dayron)
         return redirect()->route('productos.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
 
 
@@ -173,14 +144,10 @@ class ProductoController extends Controller
         }
         //
         $producto = Producto::findOrFail($id);
-<<<<<<< HEAD
-        $producto->delete();
-=======
         if(Storage::delete('public/'. $producto->imagen))
         {
             $producto->delete();
         }
->>>>>>> 318dc06 (dayron)
         return redirect()->route('productos.index');
     }
 }

@@ -12,10 +12,6 @@ class Producto extends Model
     protected $fillable = [
         'tipo',
         'descripcion',
-<<<<<<< HEAD
-        'imagen',
-=======
->>>>>>> 318dc06 (dayron)
         'precio',
         'existencia'
     ];

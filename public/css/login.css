@@ -7,16 +7,16 @@ button
 {
     margin-left: 10px;
 }
-/* .logo
+.logo
 {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    left: 80% auto;
-    top: -15%;
-    transform: translate(-50, -50);
+    position: relative;
+    width: 60%;
+    height: 60%;
+    /* left: 80% auto; */
+    top: -17%;
+    /* transform: translate(-50, -50); */
     display: flex;
-} */
+}
 .container
 {
     display: flex;
@@ -36,3 +36,5 @@ button
     padding: 2rem;
     position: relative;
 }
+
+
