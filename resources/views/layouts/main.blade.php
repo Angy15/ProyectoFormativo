@@ -86,6 +86,20 @@
                                     <a class="nav-link" href="{{ route('usuarios.index') }}">Listar</a>
                                 </nav>
                             </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
+                                Pedido
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    @can(['administrador'])
+                                    <a class="nav-link" href="{{ route('pedidos.create') }}">Crear nuevo</a>
+                                    @endcan
+                                    <a class="nav-link" href="#">Listar</a>
+                                </nav>
+                            </div>
                            
                 </nav>
             </div>

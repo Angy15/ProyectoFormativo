@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Gate;
 use Auth;
 
-class ProductoController extends Controller
+class PedidosController extends Controller
 {
     public function __construct()
     {
@@ -22,10 +22,10 @@ class ProductoController extends Controller
     public function index()
     {
         // Obtener todos los registros de productos 
-        $productos = Producto::all();
+        $pedidos = Pedido::all();
 
          // enviar a la vista para mostras los productos
-         return view('productos.index', compact('productos'));
+         return view('pedidos.index', compact('pedidos'));
     }
 
     /**
@@ -35,12 +35,13 @@ class ProductoController extends Controller
      */
     public function create()
     {
+        // echo 'Hola';
         if(Gate::denies('administrador'))
         {
-            return redirect()->route('productos.index');
+            return redirect()->route('pedidos.index');
         }
         //
-        return view('productos.insert');
+        return view('pedidos.insert');
     }
 
     /**
@@ -57,15 +58,8 @@ class ProductoController extends Controller
         // $img = $request->img;
         // $precio = $request->precio;
         // $existencia = $request->existencia;
-        $datosProductos = $request->except('_token');
-        if($request->hasFile('imagen'))
-        {
-            $datosProductos['imagen'] = $request->file('imagen')->store('uploads', 'public');
-        }
-
-        Producto::insert($datosProductos);
         // Producto::create($request->all());
-        return redirect()->route('productos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
+        return redirect()->route('pedidos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
 
         
         
@@ -84,8 +78,8 @@ class ProductoController extends Controller
         //     return redirect()->route('productos.index');
         // }
         //
-        $producto = Producto::findOrFail($id);
-        return view('productos.show', compact('producto'));
+        $pedido = Pedido::findOrFail($id);
+        return view('pedidos.show', compact('pedido'));
     }
 
     /**
@@ -99,10 +93,10 @@ class ProductoController extends Controller
         //
         if(Gate::denies('administrador'))
         {
-            return redirect()->route('productos.index');
+            return redirect()->route('pedidos.index');
         }
-        $producto = Producto::findOrFail($id);
-        return view('productos.edit', compact('producto'));
+        $pedido = Pedido::findOrFail($id);
+        return view('pedidos.edit', compact('pedido'));
     }
 
     /**
@@ -115,17 +109,8 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $producto = Producto::findOrFail($id);
-        $datosProductos = $request->except(['_token', '_method']);
-        if($request->hasFile('imagen'))
-        {
-            Storage::delete('public/'. $producto->imagen);
-            $datosProductos['imagen'] = $request->file('imagen')->store('uploads', 'public');
-        }
-
-        // $producto->update($request->all());
-        Producto::where('id', $id)->update($datosProductos);
-        return redirect()->route('productos.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
+        $pedido = Producto::findOrFail($id);
+        return redirect()->route('pedidos.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
 
 
     }
@@ -140,14 +125,14 @@ class ProductoController extends Controller
     {
         if(Gate::denies('administrador'))
         {
-            return redirect()->route('productos.index');
+            return redirect()->route('pedidos.index');
         }
         //
-        $producto = Producto::findOrFail($id);
-        if(Storage::delete('public/'. $producto->imagen))
+        $pedido = Pedido::findOrFail($id);
+        if(Storage::delete('public/'))
         {
-            $producto->delete();
+            $pedido->delete();
         }
-        return redirect()->route('productos.index');
+        return redirect()->route('pedidos.index');
     }
 }

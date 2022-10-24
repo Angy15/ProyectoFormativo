@@ -28,11 +28,7 @@
                     <tr>
                         <td>{{ $item->name}}</td>
                         <td class="d-flex">
-<<<<<<< HEAD
-                            <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-=======
                             <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
->>>>>>> 318dc06 (dayron)
                         </td>
                     </tr>
                 @endforeach
