@@ -1,12 +1,46 @@
 .logo
 {
-    margin-top: 3%;
-    width: 20%;
-    height: 20%;
+    margin-top: 2%;
+    margin-left: 40%;
+    width: 15%;
+    height: 15%;
     display: flex;
 }
 .btn
 {
     margin-top: -30%;
     margin-left: 92%;
+}
+h2
+{
+    text-align: center;
+    
+}
+p{
+    padding-left: 22%;
+}
+.foto
+{
+    width: 30%;
+    height: 30%;
+    margin-left: 33%;
+    margin-bottom: 3%;
+}
+.card
+{
+    display: inline-block;
+    margin-left: 20%;
+    margin-bottom: 4%;
+}
+iframe
+{
+    margin-left: 32%;
+    padding-bottom: 3%;
+}
+.comprar
+{
+    display: inline-flex; 
+    margin-left: 40%;  
+    margin-bottom: 2%;
+    align-items: center;
 }
