@@ -16,7 +16,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo SENA" class="logo">
             <nav class="navbar navbar-dark bg-dark fixed-top">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Bienvenidos</a>
+                  <a class="navbar-brand" href="#">Bienvenidos a MasaExpress</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -42,7 +42,7 @@
                                 <a class="nav-link active" aria-current="page" href="#">Nuestros productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">¿Donde nos ubicamos?</a>
+                                <a class="nav-link active" aria-current="page" href="">¿Donde nos ubicamos?</a>
                             </li>
                       </ul>
                     </div>
@@ -58,30 +58,33 @@
         <main class="px-3">
             <h2 class="text-center">Nuestros productos</h2>
             <p class="fs-4 fw-lighter my-5">En masa Express manejamos dos tipos de productos. <br> la masa amarrilla o la masa blanca, puede eligir la que mas prefiera con la cantidad que necesite.</p>
+            @foreach ($productos as $item)
             <div class="card" style="width: 18rem;">
-              <img src="{{ asset('images/masaAmarilla.jpg') }}" class="card-img-top" alt="...">
+              <img src="{{ asset('storage'). '/'. $item->imagen }}" alt="imagen" class="img-fluid img-miniatura">
               <div class="card-body">
-                <p class="card-text">Masa amarilla.</p>
+                <p class="card-text">{{$item->tipo}}. <br>Precio: ${{$item->precio}} lb</p>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            @endforeach
+            {{-- <div class="card" style="width: 18rem;">
               <img src="{{ asset('images/masaBlanca.jpg') }}" class="card-img-top" alt="...">
               <div class="card-body">
                 <p class="card-text">Masa blanca.</p>
               </div>
-            </div>
+            </div> --}}
           </main>
           <div class="comprar">
             <a href="#" class="btn btn-secondary">
             Comprar <i class="fa-solid fa-cart-shopping"></i>
             </a>
           </div>
+          <main class="px-3">
+              <h2 class="text-center">¿Donde nos ubicamos?</h2>
+              <p class="fs-4 fw-lighter my-5">Estamos ubicados en el sur de ibague. <br> barrio boquero .... </p>
+          </main>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15912.071135093156!2d-75.27377476739471!3d4.407771243045708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38dcb156a69f67%3A0x9e297f873344ef48!2sBoqueron%2C%20Ibagu%C3%A9%2C%20Tolima!5e0!3m2!1ses!2sco!4v1666737415803!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <footer class="mt-auto">
-        <main class="px-3">
-            <h2 class="text-center">¿Donde nos ubicamos?</h2>
-            <p class="fs-4 fw-lighter my-5">Estamos ubicados en el sur de ibague. <br> barrio boquero .... </p>
-        </main>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15912.071135093156!2d-75.27377476739471!3d4.407771243045708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38dcb156a69f67%3A0x9e297f873344ef48!2sBoqueron%2C%20Ibagu%C3%A9%2C%20Tolima!5e0!3m2!1ses!2sco!4v1666737415803!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          
         </footer>
 
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
