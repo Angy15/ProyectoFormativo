@@ -40,9 +40,6 @@
             </div>
         
 </div>
-<br>
-<a href="{{ route('productos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
-    
-</section>
+<br>UsuariosController
 
 @endsection

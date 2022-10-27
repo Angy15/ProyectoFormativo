@@ -74,7 +74,7 @@
             </div> --}}
           </main>
           <div class="comprar">
-            <a href="#" class="btn btn-secondary">
+            <a href="{{ route('clientes.create')}}" class="btn btn-secondary">
             Comprar <i class="fa-solid fa-cart-shopping"></i>
             </a>
           </div>

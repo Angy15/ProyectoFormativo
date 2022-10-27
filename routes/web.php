@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\ClientesController;
 
 
 /*
@@ -29,8 +30,17 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [FrontController::class, 'index']);
 
+Route::resource('clientes',ClientesController::class)->middleware('auth');
+
 Route::resource('productos',ProductoController::class)->middleware('auth');
 
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
+
+Route::resource('clientes', ClientesController::class)->middleware('auth');
+
+
+
+    
+
 
 
