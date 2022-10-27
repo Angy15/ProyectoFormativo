@@ -97,7 +97,7 @@
                                     @can(['administrador'])
                                     <a class="nav-link" href="{{ route('pedidos.create') }}">Crear nuevo</a>
                                     @endcan
-                                    <a class="nav-link" href="#">Listar</a>
+                                    <a class="nav-link" href="{{ route('pedidos.index') }}">Listar</a>
                                 </nav>
                             </div>
                            

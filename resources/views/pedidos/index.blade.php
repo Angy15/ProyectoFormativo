@@ -11,5 +11,24 @@
     </a>
     @endcan
 </div>
+<div class="my-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($pedidos as $item)
+                <tr>
+                    <td>{{ $item->tipo}}</td>
+                    <td class="d-flex">
+                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
 @endsection

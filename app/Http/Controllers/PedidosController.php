@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedidos;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Gate;
@@ -22,7 +23,7 @@ class PedidosController extends Controller
     public function index()
     {
         // Obtener todos los registros de productos 
-        $pedidos = Pedido::all();
+        $pedidos = Pedidos::all();
 
          // enviar a la vista para mostras los productos
          return view('pedidos.index', compact('pedidos'));
@@ -40,8 +41,9 @@ class PedidosController extends Controller
         {
             return redirect()->route('pedidos.index');
         }
+        $productos = Producto::orderBy('tipo', 'asc')->get();
         //
-        return view('pedidos.insert');
+        return view('pedidos.insert', compact('productos'));
     }
 
     /**
@@ -53,22 +55,22 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
-        // $tipo = $request->tipo;
-        // $descripcion = $request->descripcion;
-        // $img = $request->img;
-        // $precio = $request->precio;
-        // $existencia = $request->existencia;
+        $tipo = $request->tipo;
+        $cantidad = $request->cantidad;
+        $nombreCliente = $request->nombreCliente;
+        $direcciónCliente = $request->direcciónCliente;
+        $contactoCliente = $request->contactoCliente;
+        $producto_id = $request->producto_id;
         // Producto::create($request->all());
-        return redirect()->route('pedidos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
+        Pedidos::create($request->all());
 
-        
-        
+        return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Producto  $producto
+     * @param  \App\Models\Pedidos  $producto
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,14 +80,14 @@ class PedidosController extends Controller
         //     return redirect()->route('productos.index');
         // }
         //
-        $pedido = Pedido::findOrFail($id);
+        $pedido = Pedidos::findOrFail($id);
         return view('pedidos.show', compact('pedido'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Producto  $producto
+     * @param  \App\Models\Pedidos  $producto
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,7 +97,7 @@ class PedidosController extends Controller
         {
             return redirect()->route('pedidos.index');
         }
-        $pedido = Pedido::findOrFail($id);
+        $pedido = Pedidos::findOrFail($id);
         return view('pedidos.edit', compact('pedido'));
     }
 
@@ -103,22 +105,22 @@ class PedidosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Producto  $producto
+     * @param  \App\Models\Pedidos  $producto
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $pedido = Producto::findOrFail($id);
-        return redirect()->route('pedidos.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
+        $proyecto = Proyecto::findOrFail($id);
+        $pedidos->update($request->all());
 
-
+        return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha modificado satisfactoriamente!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Producto  $producto
+     * @param  \App\Models\Pedidos  $producto
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -13,6 +13,6 @@ class Pedidos extends Model
         'nombreCliente',
         'direcciónCliente',
         'contactoCliente',
-        ''        
+        'producto_id'
     ];
 }
