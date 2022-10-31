@@ -9,28 +9,32 @@
         <table class="table table-bordered">
             <tr>
                 <td>ID</td>
-                <td>{{ $pedidos->id }}</td>
+                <td>{{ $pedido->id }}</td>
             </tr>
             <tr>
-            <td>Tipo</td>
-            <td>{{ $pedidos->tipo }}</td>
+                <td>Tipo</td>
+                <td>
+                    @foreach ($productos as $item)
+                            <li class="list-group-item">{{ $item->tipo }}</li>
+                    @endforeach
+                </td>
             </tr>
             <tr>
                 <td>Cantidad</td>
-                <td>{{ $pedidos->cantidad }}</td>
+                <td>{{ $pedido->cantidad }}</td>
             </tr>
             <h5>Cliente:</h5>
             <tr>
-                <td></td>
-                <td>{{ $pedidos->nombreCliente }}</td>
+                <td>Nombre Cliente</td>
+                <td>{{ $pedido->nombreCliente }}</td>
             </tr>
             <tr>
-                <td>existencias</td>
-                <td>{{ $pedidos->direcciónCliente }}</td>
+                <td>Dirección</td>
+                <td>{{ $pedido->direccionCliente }}</td>
             </tr>
             <tr>
-                <td></td>
-                <td>{{ $pedidos->contactoCliente }}</td>
+                <td>Teléfono</td>
+                <td>{{ $pedido->contactoCliente }}</td>
             </tr>
 
         </table>

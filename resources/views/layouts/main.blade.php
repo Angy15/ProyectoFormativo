@@ -67,35 +67,35 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
-                                    <a class="nav-link" href="{{ route('productos.create') }}">Crear nuevo</a>
+                                    <a class="nav-link" href="{{ route('productos.create') }}"><i class="fa-regular fa-square-plus mx-2"></i> Crear nuevo</a> 
                                     @endcan
-                                    <a class="nav-link" href="{{ route('productos.index') }}">Listar</a>
+                                    <a class="nav-link" href="{{ route('productos.index') }}" >Listar</a>
                                 </nav>
                             </div>
                             
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-user"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
-                                    <a class="nav-link" href="{{ route('usuarios.create') }}">Crear nuevo</a>
+                                    <a class="nav-link" href="{{ route('usuarios.create') }}"><i class="fa-regular fa-square-plus mx-2"></i> Crear nuevo</a>
                                     @endcan
                                     <a class="nav-link" href="{{ route('usuarios.index') }}">Listar</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-truck"></i></div>
                                 Pedido
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
-                                    <a class="nav-link" href="{{ route('pedidos.create') }}">Crear nuevo</a>
+                                    <a class="nav-link" href="{{ route('pedidos.create') }}"> <i class="fa-regular fa-square-plus mx-1"></i>Crear nuevo</a>
                                     @endcan
                                     <a class="nav-link" href="{{ route('pedidos.index') }}">Listar</a>
                                 </nav>

@@ -10,7 +10,7 @@
                 <div class="form-floating mb-3">
                     <select class="form-select" name="producto_id" id="producto_id" required>
                         <option selected value="">Seleccione...</option>
-                        @foreach ($productos as $item)
+                        @foreach ($producto as $item)
                             <option value="{{ $item->id }}">{{ $item->tipo }}</option>    
                         @endforeach
                     </select>
@@ -22,22 +22,8 @@
             </div>
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required>
-                    <label for="descripcion">Cantidad (En libras)</label>
-                </div>
-            </div>
-        </div>
-        <div class="row g-2">
-            <div class="col-md">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nombre" name="tipo" placeholder="tipo">
-                    <label for="tipo">Tipo de masa (Opcional)</label>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion">
-                    <label for="descripcion">Cantidad (En libras)</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
+                    <label for="cantidad">Cantidad (En libras)</label>
                 </div>
             </div>
         </div>
@@ -47,32 +33,32 @@
         <div class="row g-2">
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nombre" name="tipo" placeholder="tipo">
-                    <label for="tipo">Nombre: </label>
+                    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="nombreCliente">
+                    <label for="nombreCliente">Nombre: </label>
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion">
-                    <label for="descripcion">Apellido: </label>
+                    <input type="text" class="form-control" id="apellidoCliente" name="apellidoCliente" placeholder="apellidoCliente">
+                    <label for="apellidoCliente">Apellido: </label>
                 </div>
             </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion">
-            <label for="descripcion">Dirección: </label>
+            <input type="text" class="form-control" id="direccionCliente" name="direccionCliente" placeholder="direccionCliente">
+            <label for="direccionCliente">Dirección: </label>
         </div>
         <div class="row g-2">
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nombre" name="tipo" placeholder="tipo">
-                    <label for="tipo">Correo: </label>
+                    <input type="text" class="form-control" id="correoCliente" name="correoCliente" placeholder="correoCliente">
+                    <label for="correoCliente">Correo: </label>
                 </div>
             </div>
             <div class="col-md">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion">
-                    <label for="descripcion">Teléfono: </label>
+                    <input type="text" class="form-control" id="contactoCliente" name="contactoCliente" placeholder="contactoCliente" minlength="11" maxlength="11" required>
+                    <label for="contactoCliente">Teléfono: </label>
                 </div>
             </div>
         </div>

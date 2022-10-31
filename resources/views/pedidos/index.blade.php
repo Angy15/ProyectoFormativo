@@ -21,8 +21,9 @@
         <tbody>
             @foreach ($pedidos as $item)
                 <tr>
-                    <td>{{ $item->tipo}}</td>
+                    <td>{{ $item->id }}</td>
                     <td class="d-flex">
+                        <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                         <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                 </tr>

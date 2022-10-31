@@ -41,9 +41,9 @@ class PedidosController extends Controller
         {
             return redirect()->route('pedidos.index');
         }
-        $productos = Producto::orderBy('tipo', 'asc')->get();
+        $producto = Producto::orderBy('tipo', 'asc')->get();
         //
-        return view('pedidos.insert', compact('productos'));
+        return view('pedidos.insert', compact('producto'));
     }
 
     /**
@@ -55,12 +55,13 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
-        $tipo = $request->tipo;
-        $cantidad = $request->cantidad;
-        $nombreCliente = $request->nombreCliente;
-        $direcciónCliente = $request->direcciónCliente;
-        $contactoCliente = $request->contactoCliente;
-        $producto_id = $request->producto_id;
+        // $producto_id = $request->producto_id;
+        // $cantidad = $request->cantidad;
+        // $nombreCliente = $request->nombreCliente;
+        // $apellidoCliente = $request->apellidoCliente;
+        // $direccionCliente = $request->direccionCliente;
+        // $correoCliente = $request->correoCliente;
+        // $contactoCliente = $request->contactoCliente;
         // Producto::create($request->all());
         Pedidos::create($request->all());
 
@@ -105,13 +106,13 @@ class PedidosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pedidos  $producto
+     * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $proyecto = Proyecto::findOrFail($id);
+        $producto = Producto::findOrFail($id);
         $pedidos->update($request->all());
 
         return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha modificado satisfactoriamente!');

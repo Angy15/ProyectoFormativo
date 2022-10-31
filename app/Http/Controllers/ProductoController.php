@@ -87,7 +87,7 @@ class ProductoController extends Controller
         //
         $producto = Producto::findOrFail($id);
         $pedidos = Pedidos::where('producto_id', $id)
-                                        ->orderBy('tipo', 'asc')
+                                        ->orderBy('nombreCliente', 'asc')
                                          ->get();
         // dd($desarrolladores);
         return view('productos.show', compact('producto', 'pedidos'));
