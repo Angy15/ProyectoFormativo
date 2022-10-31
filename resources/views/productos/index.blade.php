@@ -18,7 +18,7 @@
         @endcan
     </div>
 
-
+    @can(['administrador'])
     <div class="container">
         <div class="my-3">
             <table class="table table-hover">
@@ -31,15 +31,17 @@
                     </tr>
                 </thead>
                 <tbody>
+            
                     @foreach ($productos as $item)
-                        <tr>
-                            <td>{{ $item->tipo}}</td>
-                            <td>{{ $item->descripcion}}</td>
-                            <td class="d-flex">
-                                <a href="{{ route('productos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                    <tr>
+                        <td>{{ $item->tipo}}</td>
+                        <td>{{ $item->descripcion}}</td>
+                        <td class="d-flex">
+                            <a href="{{ route('productos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                                 @can(['administrador'])
                                 <a href="{{ route('productos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <form action="{{ route('productos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
@@ -52,6 +54,7 @@
             </table>
         </div>
     </div>
+    @endcan
 @endsection
 
 @section('scripts')

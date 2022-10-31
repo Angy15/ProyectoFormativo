@@ -58,11 +58,13 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                                 Inicio
                             </a>
+                            @can(['administrador'])
                             <div class="sb-sidenav-menu-heading">Acciones</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                                 Productos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            @endcan
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
@@ -72,12 +74,13 @@
                                     <a class="nav-link" href="{{ route('productos.index') }}">Listar</a>
                                 </nav>
                             </div>
-                            
+                            @can(['administrador'])
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            @endcan
                             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
@@ -92,7 +95,9 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                    <h1 class="mt-3">@yield('titulo')</h1>  
+                        @can(['administrador'])
+                    <h1 class="mt-3">@yield('titulo')</h1> 
+                    @endcan 
                     </div>
                 </main>
                 <div class="container">
