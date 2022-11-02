@@ -6,18 +6,18 @@
 
 @if($mensaje = Session::get('exito'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <p>{{ $mensaje }}</p>
+        <p>|{{ $mensaje }}</p>
         <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
     <div class="mt-3">
-        @can(['administrador'])
+        @can(['administrador']) 
         <a href="{{ route('productos.create') }}" class="btn btn-secondary">
             Crear nuevo producto
         </a>
         @endcan
     </div>
-
+    
     @can(['administrador'])
     <div class="container">
         <div class="my-3">

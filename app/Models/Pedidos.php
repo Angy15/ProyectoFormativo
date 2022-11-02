@@ -15,7 +15,9 @@ class Pedidos extends Model
     'telefono',
     'direccion',
     'productos_id',
-    'cantidad'
+    'cantidad',
+    'productos2_id',
+    'cantidad2'
 
     ];
 }

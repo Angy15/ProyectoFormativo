@@ -21,18 +21,31 @@
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" required>
             <label for="direccion">Direccion</label>
         </div>
-        {{-- <div class="form-floating mb-3">
-            <select name="productos_id" id="productos_id">
-                <option selected value="">Seleccione...</option>
+        <div class="form-floating mb-3">
+            <select name="productos_id" id="productos_id" class="form-select" required>
+                <option selected value="" disabled>Seleccione...</option>
                 @foreach ($productos as $item )
                     <option value="{{ $item->id }}">{{ $item->tipo }}</option>
                 @endforeach
             </select>
             <label for="productos_id">Productos</label>
-        </div> --}}
+        </div>
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="existencia" name="existencia" placeholder="existencia" required>
-            <label for="existencia">Existencia</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
+            <label for="cantidad">Cantidad en Lb</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select name="productos2_id" id="productos2_id" class="form-select">
+                <option selected value="" disabled>Seleccione producto 2</option>
+                @foreach ($productos as $item )
+                    <option value="{{ $item->id }}">{{ $item->tipo }}</option>
+                @endforeach
+            </select>
+            <label for="productos_id">Producto 2 "opcional"</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="cantidad2" name="cantidad2" placeholder="cantidad2">
+            <label for="cantidad2">Cantidad de masa producto 2</label>
         </div>
         <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
         <button type="submit" class="btn btn-outline-secondary">Guardar</button>

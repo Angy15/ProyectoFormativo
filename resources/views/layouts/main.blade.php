@@ -85,19 +85,32 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
                                     <a class="nav-link" href="{{ route('usuarios.create') }}">Crear nuevo</a>
-                                    @endcan
                                     <a class="nav-link" href="{{ route('usuarios.index') }}">Listar</a>
+                                    @endcan
                                 </nav>
                             </div>
+                            
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
+                                Pedidos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('pedidos.index') }}">Listar</a>
+                                </nav>
+                            </div>
+                        
+                            
                            
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        @can(['administrador'])
+
                     <h1 class="mt-3">@yield('titulo')</h1> 
-                    @endcan 
+                    
                     </div>
                 </main>
                 <div class="container">

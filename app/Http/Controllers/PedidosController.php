@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedidos;
-use App\Models\Productos;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -24,7 +24,7 @@ class PedidosController extends Controller
         $productos = Producto::all();
 
          // enviar a la vista para mostras los productos
-         return view('productos.index', compact('productos'));
+         return view('pedidos.index', compact('productos'));
     }
 
     /**
@@ -35,7 +35,8 @@ class PedidosController extends Controller
     public function create()
     {
         //
-        return view('pedidos.insert');
+        $productos = Producto::orderBy('tipo', 'asc')->get();
+        return view('pedidos.insert', compact('productos'));
     }
 
     /**
@@ -47,7 +48,17 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
+        $nombre = $request->nombre;
+        $apellido = $request->apellido;
+        $telefono = $request->telefono;
+        $direccion = $request->direccion;
+        $productos_id = $request->productos_id;
+        $cantidad = $request->cantidad;
+        $productos2_id = $request->productos2_id;
+        $cantidad2 = $request->cantidad2;
 
+        Pedidos::create($request->all());
+        return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
 
     }
 

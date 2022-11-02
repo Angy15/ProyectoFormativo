@@ -11,6 +11,7 @@ use Auth;
 
 class UsuariosController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *

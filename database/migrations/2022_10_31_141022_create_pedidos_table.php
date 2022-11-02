@@ -21,6 +21,8 @@ class CreatePedidosTable extends Migration
             $table->string('direccion');
             $table->foreignId('productos_id')->constrained('productos');
             $table->integer('cantidad');
+            $table->foreignId('productos2_id')->constrained('productos');
+            $table->integer('cantidad2');
             $table->timestamps();
 
         });
