@@ -81,8 +81,15 @@ class PedidosController extends Controller
         //     return redirect()->route('productos.index');
         // }
         //
-        $pedido = Pedidos::findOrFail($id);
-        return view('pedidos.show', compact('pedido'));
+        // $pedido = Pedidos::findOrFail($id);
+        $pedidos = Pedidos::join('productos','pedidos.producto_id','producto.id')
+                                            ->select('pedidos.id','pedidos.cantidad',
+                                            'pedidos.nombreCliente','pedidos.apellidoCliente',
+                                            'pedidos.direccionCliente', 'pedidos.correoCliente',  
+                                            'pedidos.contactoCliente','producto.tipo as masa')
+                                            ->where('pedidos.id',$id)
+                                            ->first();
+        return view('pedidos.show', compact('pedidos'));
     }
 
     /**
