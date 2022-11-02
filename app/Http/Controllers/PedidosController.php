@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedidos;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Gate;
@@ -22,7 +23,7 @@ class PedidosController extends Controller
     public function index()
     {
         // Obtener todos los registros de productos 
-        $pedidos = Pedido::all();
+        $pedidos = Pedidos::all();
 
          // enviar a la vista para mostras los productos
          return view('pedidos.index', compact('pedidos'));
@@ -41,7 +42,9 @@ class PedidosController extends Controller
             return redirect()->route('pedidos.index');
         }
         //
-        return view('pedidos.insert');
+        $producto = Producto::orderBy('tipo', 'asc')->get();
+        //
+        return view('pedidos.insert', compact('producto'));
     }
 
     /**
@@ -59,6 +62,8 @@ class PedidosController extends Controller
         // $precio = $request->precio;
         // $existencia = $request->existencia;
         // Producto::create($request->all());
+        Pedidos::create($request->all());
+
         return redirect()->route('pedidos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
 
         
@@ -78,7 +83,13 @@ class PedidosController extends Controller
         //     return redirect()->route('productos.index');
         // }
         //
-        $pedido = Pedido::findOrFail($id);
+        $pedido = Pedidos::join('productos', 'pedidos.producto_id', 'productos.id')
+                                        ->select('pedidos.id', 'pedidos.cantidad', 
+                                        'pedidos.nombreCliente', 'pedidos.apellidoCliente', 
+                                        'pedidos.direccionCliente', 'pedidos.correoCliente', 'contactoCliente', 'productos.tipo as productos',)
+                                        ->where('pedidos.id', $id)
+                                        ->first();
+        //
         return view('pedidos.show', compact('pedido'));
     }
 
@@ -95,7 +106,7 @@ class PedidosController extends Controller
         {
             return redirect()->route('pedidos.index');
         }
-        $pedido = Pedido::findOrFail($id);
+        $pedido = Pedidos::findOrFail($id);
         return view('pedidos.edit', compact('pedido'));
     }
 
@@ -109,7 +120,9 @@ class PedidosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $pedido = Producto::findOrFail($id);
+        $producto = Producto::findOrFail($id);
+        $pedidos->update($request->all());
+
         return redirect()->route('pedidos.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
 
 
@@ -128,7 +141,7 @@ class PedidosController extends Controller
             return redirect()->route('pedidos.index');
         }
         //
-        $pedido = Pedido::findOrFail($id);
+        $pedido = Pedidos::findOrFail($id);
         if(Storage::delete('public/'))
         {
             $pedido->delete();

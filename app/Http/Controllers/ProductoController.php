@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Gate;
@@ -102,7 +103,8 @@ class ProductoController extends Controller
             return redirect()->route('productos.index');
         }
         $producto = Producto::findOrFail($id);
-        return view('productos.edit', compact('producto'));
+        $pedidos = Pedidos::orderBy('tipo', 'asc')->get();
+        return view('productos.edit', compact('producto', 'pedidos'));
     }
 
     /**

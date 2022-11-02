@@ -19,21 +19,21 @@
                         <td>{{ $producto->id }}</td>
                     </tr>
                     <tr>
-                    <td>Tipo</td>
-                    <td>{{ $producto->tipo }}</td>
-                </tr>
-                <tr>
-                    <td>Descripción</td>
-                    <td>{{ $producto->descripcion }}</td>
-                </tr>
-                <tr>
-                    <td>precio</td>
-                    <td>{{ $producto->precio }}</td>
-                </tr>
-                <tr>
-                    <td>existencias</td>
-                    <td>{{ $producto->existencia }}</td>
-                </tr>
+                        <td>Tipo</td>
+                        <td>{{ $producto->tipo }}</td>
+                    </tr>
+                    <tr>
+                        <td>Descripción</td>
+                        <td>{{ $producto->descripcion }}</td>
+                    </tr>
+                    <tr>
+                        <td>precio</td>
+                        <td>{{ $producto->precio }}</td>
+                    </tr>
+                    <tr>
+                        <td>existencias</td>
+                        <td>{{ $producto->existencia }}</td>
+                    </tr>
                 
             </table>
 

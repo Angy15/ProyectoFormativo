@@ -8,7 +8,7 @@
         @method('PUT')
         @csrf 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" name="tipo" placeholder="tipo" value="{{ $producto->tipo }}" required>
+            <input type="text" class="form-control" id="tipo" name="tipo" placeholder="tipo" value="{{ $producto->tipo }}" required>
             <label for="tipo">Tipo de masa</label>
         </div>
         <div class="form-floating mb-3">
