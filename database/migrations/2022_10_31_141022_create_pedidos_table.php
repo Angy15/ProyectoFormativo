@@ -15,16 +15,17 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');
             $table->string('direccion');
             $table->foreignId('productos_id')->constrained('productos');
             $table->integer('cantidad');
-            $table->foreignId('productos2_id')->constrained('productos');
-            $table->integer('cantidad2');
+            $table->foreignId('productos2_id')->constrained('productos')->nullable();
+            $table->integer('cantidad2')->nullable();
             $table->timestamps();
-
+            $table->softDeletes();
         });
     }
 
@@ -38,6 +39,9 @@ class CreatePedidosTable extends Migration
         Schema::dropIfExists('pedidos');
         Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign('pedidos_productos_id_foreign');
+        });
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropForeign('pedidos_user_id_foreign');
         });
     }
 }

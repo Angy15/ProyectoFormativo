@@ -3,6 +3,54 @@
 @section('titulo', 'Pedidos')
 @section('content')
 
+@if($mensaje = Session::get('exito'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <p>{{ $mensaje }}</p>
+    <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+@can(['administrador'])
+    <div class="mt-3">
+        <a href="{{ route('pedidos.create') }}" class="btn btn-light" id="btn">
+            Crear nuevo pedido
+        </a>
+    </div>
+@endcan
+    
+<div class="my-3 text-center">
+ 
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($pedidoUsuario as $item)
+            <tr>
+                <td>{{ $item->nombre }}</td>
+                <td>{{ $item->apellido }}</td>
+                <td>{{ $item->direccion }}</td>
+
+                <td class="d-flex">
+                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</div>
 
 @endsection
 @section('scripts')

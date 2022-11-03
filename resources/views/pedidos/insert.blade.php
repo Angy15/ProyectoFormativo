@@ -5,6 +5,12 @@
     
     <form action="{{ route('pedidos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf 
+
+        <div class="form-floating mb-3">
+            <input type="hidden" class="form-control" id="user_id" name="user_id"  value="{{ auth()->user()->id}}" required>
+            <label for="tipo">id de usuario</label>
+        </div>
+
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
             <label for="nombre">nombre</label>

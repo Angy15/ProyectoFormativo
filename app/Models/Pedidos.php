@@ -10,6 +10,7 @@ class Pedidos extends Model
 {
     use softDeletes;
     protected $fillable = [
+    'user_id',
     'nombre',
     'apellido',
     'telefono',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedidos;
 use App\Models\Producto;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -18,13 +19,32 @@ class PedidosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Pedidos $id)
     {
-        // Obtener todos los registros de productos 
-        $productos = Producto::all();
+        // Obtener todos los registros del pedido
 
+        $usuarios = User::all();
+
+        $dd = auth()->user()->id;
+
+        if(Auth::user()->hasRol("Administrador")){
+
+            $pedidoUsuario = Pedidos::all();
+            return view('pedidos.index', compact("pedidoUsuario"));
+
+        }
+            $pedidos = Pedidos::findOrFail($id);
+
+            $pedidoUsuario = Pedidos::where("user_id", $dd)
+            ->get();
+       
+    
+    
+        // $user = User::where('user_id',auth()->user()->id)->get();
          // enviar a la vista para mostras los productos
-         return view('pedidos.index', compact('productos'));
+       
+
+         return view('pedidos.index', compact("pedidos","usuarios","pedidoUsuario"));
     }
 
     /**
@@ -48,6 +68,7 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
+        $user_id = $request->user_id;
         $nombre = $request->nombre;
         $apellido = $request->apellido;
         $telefono = $request->telefono;
@@ -68,7 +89,7 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function show(Pedidos $pedidos)
+    public function show($id)
     {
         //
     }
