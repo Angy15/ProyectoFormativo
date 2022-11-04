@@ -92,7 +92,19 @@ class PedidosController extends Controller
     public function show($id)
     {
         //
-        $pedidos = Pedidos::findOrFail($id);
+        $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
+                                        ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
+                                                    'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
+                                                    'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos')
+                                                    ->where('pedidos.id',$id)
+                                                    ->first();
+
+        // $pedidos = Pedidos::join('productos', 'pedidos.productos2_id',  'productos.id')
+        //                                 ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
+        //                                                 'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
+        //                                                 'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos2')
+        //                                                 ->where('pedidos.id',$id)
+        //                                                 ->first();
 
         return view('pedidos.show', compact('pedidos'));
         

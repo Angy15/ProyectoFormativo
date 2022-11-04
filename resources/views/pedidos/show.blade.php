@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <td>Producto 1</td>
-                        <td>{{ $pedidos->productos_id }}</td>
+                        <td>{{ $pedidos->productos }}</td>
                     </tr>
                     <tr>
                         <td>Cantidad 1</td>
