@@ -97,6 +97,7 @@
                             </a>
                             <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('pedidos.create') }}">Crear nuevo</a>
                                     <a class="nav-link" href="{{ route('pedidos.index') }}">Listar</a>
                                 </nav>
                             </div>

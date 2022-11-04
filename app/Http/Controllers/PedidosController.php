@@ -92,6 +92,10 @@ class PedidosController extends Controller
     public function show($id)
     {
         //
+        $pedidos = Pedidos::findOrFail($id);
+
+        return view('pedidos.show', compact('pedidos'));
+        
     }
 
     /**
@@ -123,8 +127,13 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedidos $pedidos)
+    public function destroy($id)
     {
         //
+        $pedidos = Pedidos::findOrFail($id);
+
+        $pedidos->delete();
+
+        return redirect()->route('pedidos.index');
     }
 }

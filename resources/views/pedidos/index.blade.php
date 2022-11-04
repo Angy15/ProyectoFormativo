@@ -9,13 +9,13 @@
     <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-@can(['administrador'])
+
     <div class="mt-3">
-        <a href="{{ route('pedidos.create') }}" class="btn btn-light" id="btn">
+        <a href="{{ route('pedidos.create') }}" class="btn btn-secondary">
             Crear nuevo pedido
         </a>
     </div>
-@endcan
+
     
 <div class="my-3 text-center">
  
@@ -35,14 +35,13 @@
                 <td>{{ $item->apellido }}</td>
                 <td>{{ $item->direccion }}</td>
 
-                <td class="d-flex">
-                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                <td class="">
+                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                         <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                <i class="fa-solid fa-trash-can"></i>
+                            <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i>
                             </button>
                         </form>
                 </td>
