@@ -9,12 +9,12 @@ body
 
 .logo
 {
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     margin-top: 3%;
-    margin-left: 27%;
-    width: 45%;
-    height: 45%;
+    margin-left: 40%;
+    width: 18%;
+    height: 18%;
     display: flex;
 }
 .btn
