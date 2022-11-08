@@ -22,13 +22,12 @@ class PedidosController extends Controller
     public function index(Pedidos $id)
     {
         // Obtener todos los registros del pedido
-
         $usuarios = User::all();
-
+        
         $dd = auth()->user()->id;
-
+        
         if(Auth::user()->hasRol("Administrador")){
-
+            
             $pedidoUsuario = Pedidos::all();
             return view('pedidos.index', compact("pedidoUsuario"));
 
