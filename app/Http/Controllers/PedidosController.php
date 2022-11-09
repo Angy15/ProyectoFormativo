@@ -98,14 +98,14 @@ class PedidosController extends Controller
                                                     ->where('pedidos.id',$id)
                                                     ->first();
 
-        // $pedidos = Pedidos::join('productos', 'pedidos.productos2_id',  'productos.id')
-        //                                 ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
-        //                                                 'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
-        //                                                 'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos2')
-        //                                                 ->where('pedidos.id',$id)
-        //                                                 ->first();
+        $pedidos2 = Pedidos::join('productos', 'pedidos.productos2_id',  'productos.id')
+                                        ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
+                                                        'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
+                                                        'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos2')
+                                                        ->where('pedidos.id',$id)
+                                                        ->first();
 
-        return view('pedidos.show', compact('pedidos'));
+        return view('pedidos.show', compact('pedidos', 'pedidos2'));
         
     }
 
@@ -115,9 +115,12 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedidos $pedidos)
+    public function edit($id)
     {
         //
+        $pedidos = Pedidos::findOrFail($id);
+        $productos = Producto::orderBy('tipo', 'asc')->get();
+        return view('pedidos.edit', compact('pedidos', 'productos'));
     }
 
     /**
@@ -127,9 +130,14 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedidos $pedidos)
+    public function update(Request $request, $id)
     {
         //
+        $pedidos = Pedidos::findOrFail($id);
+
+        $pedidos->update($request->all());
+        return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
+
     }
 
     /**

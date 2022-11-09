@@ -53,7 +53,7 @@
   <main class="container-fluid mb-auto">
     <div class="justify-content-center align-items-center">
         <h2 class="text-center" id="info">¿Quienes somos?</h2>
-        <p class="fs-4 fw-lighter my-5">Somos una micro empresa dedicada a la venta de masa a base de maiz,</p>
+        <p class="fs-4 fw-lighter my-5">Somos una micro empresa dedicada a la venta de masa a base de maiz</p>
         
         <img src="{{ asset('images/card1.jpg') }}" alt="Foto maiz" class="foto">
     </div>
@@ -64,7 +64,7 @@
         <div class="card" style="width: 18rem;">
           <img src="{{ asset('storage'). '/'. $item->imagen }}" alt="imagen" class="img-fluid img-miniatura">
           <div class="card-body">
-            <p class="card-text">{{$item->tipo}}. <br>Precio: ${{$item->precio}} lb</p>
+            <p class="card-text">{{$item->tipo}}. <br>Precio: ${{$item->precio}} por libra.</p>
           </div>
         </div>
         @endforeach
@@ -91,7 +91,7 @@
       </div> --}}
 
       <div class="comprar">
-        <a href="{{ route('pedidos.create')}}" class="btn btn-secondary">
+        <a href="{{ route('pedidos.create')}}" id="botonCompra" class="btn btn-warning">
         Comprar <i class="fa-solid fa-cart-shopping"></i>
         </a>
       </div>

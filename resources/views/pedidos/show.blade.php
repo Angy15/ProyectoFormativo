@@ -8,7 +8,7 @@
                 
                 <table class="table table-bordered">
                         <tr>
-                            <td>nombre</td>
+                            <td>Nombre</td>
                             <td>{{ $pedidos->nombre }}</td>
                         </tr>
                         <tr>
@@ -16,7 +16,7 @@
                         <td>{{ $pedidos->apellido }}</td>
                     </tr>
                     <tr>
-                        <td>telefono</td>
+                        <td>Teléfono</td>
                         <td>{{ $pedidos->telefono }}</td>
                     </tr>
                     <tr>
@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <td>Producto 2</td>
-                        <td>{{ $pedidos->productos2_id }}</td>
+                        <td>{{ $pedidos->productos2}}</td>
                     </tr>
                     <tr>
                         <td>Cantidad 2</td>

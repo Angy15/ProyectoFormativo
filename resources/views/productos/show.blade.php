@@ -27,11 +27,11 @@
                         <td>{{ $producto->descripcion }}</td>
                     </tr>
                     <tr>
-                        <td>precio</td>
+                        <td>Precio</td>
                         <td>{{ $producto->precio }}</td>
                     </tr>
                     <tr>
-                        <td>existencias</td>
+                        <td>Existencias</td>
                         <td>{{ $producto->existencia }}</td>
                     </tr>
                 

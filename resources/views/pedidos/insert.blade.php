@@ -12,8 +12,8 @@
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
-            <label for="nombre">nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" value="{{ auth()->user()->name }}" required>
+            <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="apellido" name="apellido" placeholder="apellido" required>
@@ -21,11 +21,11 @@
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono" minlength="10" maxlength="10" required>
-            <label for="telefono">Telefono</label>
+            <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" required>
-            <label for="direccion">Direccion</label>
+            <label for="direccion">Dirección</label>
         </div>
         <div class="form-floating mb-3">
             <select name="productos_id" id="productos_id" class="form-select" required>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
-            <label for="cantidad">Cantidad en Lb</label>
+            <label for="cantidad">Cantidad en libras</label>
         </div>
         <div class="form-floating mb-3">
             <select name="productos2_id" id="productos2_id" class="form-select">

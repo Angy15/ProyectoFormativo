@@ -24,7 +24,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Direccion</th>
+                <th>Dirección</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -41,8 +41,7 @@
                         <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i>
-                            </button>
+                            <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                 </td>
             </tr>
@@ -53,25 +52,26 @@
 
 @endsection
 @section('scripts')
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        (() => {
-        'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
+        $('.form-delete').submit(function(e){
+            e.preventDefault();
+            //Lanzar alerta de Sweetalert
+            Swal.fire({
+                title: '¿Esta seguro de eliminar?',
+                text: "Esta acción no se podrá deshacer!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0d6efd',
+                cancelButtonColor: '#dc3545',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
                 }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-
+            })
+        });
     </script>
 @endsection
