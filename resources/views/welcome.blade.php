@@ -12,14 +12,14 @@
 </head>
 <body>
   <header class="mb-auto">
-      <img src="{{ asset('images/logo.png') }}" alt="Logo SENA" class="logo">
-      <nav class="navbar navbar-dark bg-dark fixed-top">
+      <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+      <nav class="navbar fixed-top shadow" id="navbar">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bienvenidos a MasaExpress</a>
+            <a class="navbar-brand text-white" href="#">Bienvenidos a MasaExpress</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Masa Express</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -30,8 +30,8 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Administrador
                       </a>
-                      <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="{{ route('productos.index')}}">Ingresar</a></li>
+                      <ul class="dropdown-menu  ">
+                        <li><a class="dropdown-item " href="{{ route('productos.index')}}">Ingresar</a></li>
                       </ul>
                     </li>
                       <li class="nav-item">

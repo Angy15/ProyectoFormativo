@@ -1,10 +1,13 @@
 body
 {
     background-size: 100%;
-    background-image: linear-gradient(rgba(211, 214, 31, 0.637), rgba(76, 182, 34, 0.39)),url(../images/fondo2.jpg);
+    background-image: url(../images/fondo.png);
     background-attachment: fixed;
 }
 
+#navbar, .offcanvas, .dropdown-menu {
+    background: #89d372;
+}
 
 
 .logo
@@ -28,8 +31,9 @@ h2
     align-items: center;
     
 }
-p{
+p{ 
     text-align: center;
+    text-decoration: #F2CB05;
 }
 .foto
 {
