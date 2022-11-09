@@ -26,6 +26,9 @@
                 <th>Apellido</th>
                 <th>Dirección</th>
                 <th>Acciones</th>
+                <th>Estados</th>
+
+               
             </tr>
         </thead>
         <tbody>
@@ -43,6 +46,37 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
+                </td>
+                @can(['administrador'])
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Aceptado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            En proceso
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Despachado
+                        </label>
+                    </div>
+                    </td>
+                    @endcan
+                    <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Recibido
+                        </label>
+                    </div>
+                    </td>
                 </td>
             </tr>
         @endforeach
