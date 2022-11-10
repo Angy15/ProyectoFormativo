@@ -10,23 +10,38 @@
             <input type="hidden" class="form-control" id="user_id" name="user_id"  value="{{ auth()->user()->id}}" required>
             <label for="tipo">id de usuario</label>
         </div>
-
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" value="{{ auth()->user()->name }}" required>
-            <label for="nombre">Nombre</label>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" value="{{ auth()->user()->name }}" required>
+                    <label for="nombre">Nombre</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="apellido" required>
+                    <label for="apellido">Apellido</label>
+                </div>
+            </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="apellido" required>
-            <label for="apellido">Apellido</label>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" required>
+                    <label for="direccion">Dirección</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono" minlength="10" maxlength="10" required>
+                    <label for="telefono">Teléfono</label>
+                </div>
+            </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono" minlength="10" maxlength="10" required>
-            <label for="telefono">Teléfono</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" required>
-            <label for="direccion">Dirección</label>
-        </div>
+       
+        <hr>
+        
+       
         <div class="form-floating mb-3">
             <select name="productos_id" id="productos_id" class="form-select" required>
                 <option selected value="" disabled>Seleccione...</option>

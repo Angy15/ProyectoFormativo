@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 @charset "UTF-8";
 /*!
 * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
@@ -64,6 +66,12 @@
   --bs-body-bg: #fff;
 }
 
+#masa1
+{
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px;
+}
+
 *,
 *::before,
 *::after {
@@ -89,7 +97,11 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-hr {
+.sb-sidenav {
+  background: #89d372;
+}
+
+hr {  
   margin: 1rem 0;
   color: inherit;
   background-color: currentColor;
@@ -235,11 +247,11 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: #000000;
   text-decoration: underline;
 }
 a:hover {
-  color: #0a58ca;
+  color: #000000;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

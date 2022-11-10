@@ -36,7 +36,7 @@ Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
 
-
+Route::resource('welcome', FrontController::class);
 
 
     

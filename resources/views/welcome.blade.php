@@ -13,35 +13,27 @@
 <body>
   <header class="mb-auto">
       <img src="{{ asset('images/logo.png') }}" alt="Logo SENA" class="logo">
-      <nav class="navbar navbar-dark bg-dark fixed-top">
+      <nav class="navbar fixed-top shadow" id="navbar">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bienvenidos a MasaExpress</a>
+            <a class="navbar-brand" href="#" id="masa1">Bienvenidos a MasaExpress</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Masa Express</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Administrador
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="{{ route('productos.index')}}">Ingresar</a></li>
-                      </ul>
-                    </li>
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">¿Quienes somos?</a>
+                        <a class="nav-link active" aria-current="page" href="#">¿Quiénes somos?</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="#">Nuestros productos</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="">¿Donde nos ubicamos?</a>
+                          <a class="nav-link active" aria-current="page" href="">¿Dónde nos ubicamos?</a>
                       </li>
                 </ul>
               </div>
@@ -52,14 +44,14 @@
 
   <main class="container-fluid mb-auto">
     <div class="justify-content-center align-items-center">
-        <h2 class="text-center" id="info">¿Quienes somos?</h2>
-        <p class="fs-4 fw-lighter my-5">Somos una micro empresa dedicada a la venta de masa a base de maiz</p>
+        <h2 class="text-center" id="titulos">¿Quiénes somos?</h2>
+        <p class="fs-4 fw-lighter my-5" id="parrafo">Somos una micro empresa dedicada a la venta de masa a base de maiz</p>
         
         <img src="{{ asset('images/card1.jpg') }}" alt="Foto maiz" class="foto">
     </div>
     <div class="justify-content-center align-items-center">
-        <h2 class="text-center">Nuestros productos</h2>
-        <p class="fs-4 fw-lighter my-5">En masa Express manejamos dos tipos de productos. <br> la masa amarrilla o la masa blanca, puede eligir la que mas prefiera con la cantidad que necesite.</p>
+        <h2 class="text-center" id="titulos">Nuestros productos</h2>
+        <p class="fs-4 fw-lighter my-5" id="parrafo">En masa Express manejamos dos tipos de productos. <br> la masa amarrilla o la masa blanca, puede eligir la que mas prefiera con la cantidad que necesite.</p>
         @foreach ($productos as $item)
         <div class="card" style="width: 18rem;">
           <img src="{{ asset('storage'). '/'. $item->imagen }}" alt="imagen" class="img-fluid img-miniatura">
@@ -95,9 +87,9 @@
         Comprar <i class="fa-solid fa-cart-shopping"></i>
         </a>
       </div>
-      <h2 class="text-center">¿Donde nos ubicamos?</h2>
+      <h2 class="text-center" id="titulos">¿Dónde nos ubicamos?</h2>
       <div class="row-2 px-3">
-            <p class="fs-4 fw-lighter my-5">Estamos ubicados en el sur de ibague. <br> barrio boquero .... </p>
+            <p class="fs-4 fw-lighter my-5" id="parrafo">Estamos ubicados en el sur de ibague. <br> barrio boquero .... </p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15912.071135093156!2d-75.27377476739471!3d4.407771243045708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38dcb156a69f67%3A0x9e297f873344ef48!2sBoqueron%2C%20Ibagu%C3%A9%2C%20Tolima!5e0!3m2!1ses!2sco!4v1666737415803!5m2!1ses!2sco" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       

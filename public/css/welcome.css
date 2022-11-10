@@ -1,26 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 body
 {
     background-size: 100%;
-    background-image: linear-gradient(rgba(211, 214, 31, 0.637), rgba(76, 182, 34, 0.39)),url(../images/fondo2.jpg);
+    background-image: url(../images/fondo.png);
     background-attachment: fixed;
 }
 
-
+#navbar, .offcanvas, .dropdown-menu {
+    background: #89d372;
+}
 
 .logo
 {
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
     margin-top: 3%;
-    margin-left: 40%;
-    width: 18%;
-    height: 18%;
+    margin-left: 30%;
+    width: 40%;
+    height: 40%;
     display: flex;
 }
 .btn
 {
     margin-top: -30%;   
-    margin-left: 92%;
+    /* margin-left: 92%; */
 }
 h2
 {
@@ -48,19 +54,43 @@ p{
 }
 iframe
 {
-    
     margin-left: 32%;
     padding-bottom: 3%;
     
 }
 .comprar
 {
-    display: inline-flex; 
-    margin-left: 40%;  
+    display: inline-flex;
+    margin-left: 45%;  
     margin-bottom: 2%;
-    align-items: center;
+    justify-content: center;
 }
-#botonCompra
-{
 
+#offcanvasDarkNavbarLabel
+{
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
 }
+
+#masa1
+{
+    font-family: 'Handlee', cursive;
+    font-size: 30px; 
+}
+
+#titulos
+{
+    font-family: 'Handlee', cursive;
+    font-size: 40px; 
+}
+
+#parrafo {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+}
+
+#botonCompra {
+    font-family: 'Handlee', cursive; 
+    font-size: 28px;
+}
+
