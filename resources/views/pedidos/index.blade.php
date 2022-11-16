@@ -47,29 +47,22 @@
                             <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                 </td>
-                @can(['administrador'])
+                @if (Auth::user()->hasRol("Administrador"))
                 <td>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Aceptado.
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            En proceso.
-                        </label>
-                      </div>
-                      <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                          <label class="form-check-label" for="flexRadioDefault3">
-                              Despachado.
-                            </label>
-                        </div>
-                    </td>
+                    <select class="form-select"  id="estados" name="estados" aria-label="Default select example">
+                        <option selected name="opciones" disabled>Estado de pedido</option>
+                        <option name="aceptado" value="1">Aceptado</option>
+                        <option name="enProceso" value="2">En proceso</option>
+                        <option name="despachado" value="3">Despachado</option>
+                    </select>
                 </td>
-                @endcan
+                @else
+                <td>
+                    <select class="form-select" id="estadosU" name="estadosU" aria-label="Default select example" disabled>
+                        <option selected value="selected"></option>
+                    </select>
+                </td> 
+                @endif
             </tr>
         @endforeach
         </tbody>
@@ -101,3 +94,11 @@
         });
     </script>
 @endsection
+            {{-- <script type="text/javascript">
+                funtion ShowSelected()
+                {
+                    var combo = document.getElementById('estados').value;
+                    var selected = combo.options[combo.selectedIndex].text;
+                    alert(selected);
+                }
+            </script> --}}

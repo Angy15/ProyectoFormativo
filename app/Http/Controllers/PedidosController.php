@@ -25,6 +25,8 @@ class PedidosController extends Controller
         $usuarios = User::all();
         
         $dd = auth()->user()->id;
+
+        
         
         if(Auth::user()->hasRol("Administrador")){
             
