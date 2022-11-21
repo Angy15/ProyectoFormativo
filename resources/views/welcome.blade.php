@@ -44,14 +44,15 @@
 
   <main class="container-fluid mb-auto">
     <div class="justify-content-center align-items-center">
+      <br>
         <h2 class="text-center" id="titulos1">¿Quiénes somos?</h2>
-        <p class="fs-4 fw-lighter my-5" id="parrafo">Somos una micro empresa dedicada a la venta de masa a base de maiz</p>
+        <p class="fs-4 fw-lighter my-5" id="parrafo">Somos una micro empresa dedicada a la venta de masa a base de maíz</p>
         
         <img src="{{ asset('images/card1.jpg') }}" alt="Foto maiz" class="foto" >
     </div>
     <div class="justify-content-center align-items-center">
         <h2 class="text-center" id="titulos2">Nuestros productos</h2>
-        <p class="fs-4 fw-lighter my-5" id="parrafo">En masa Express manejamos dos tipos de productos. <br> la masa amarrilla o la masa blanca, puede eligir la que mas prefiera con la cantidad que necesite.</p>
+        <p class="fs-4 fw-lighter my-5" id="parrafo">En masa Express manejamos dos tipos de productos. <br> La masa amarrilla o la masa blanca, puede eligir la que mas prefiera con la cantidad que necesite.</p>
         @foreach ($productos as $item)
         <div class="card" style="width: 18rem;">
           <img src="{{ asset('storage'). '/'. $item->imagen }}" alt="imagen" class="img-fluid img-miniatura">
@@ -89,7 +90,7 @@
       </div>
       <h2 class="text-center" id="titulos3">¿Dónde nos ubicamos?</h2>
       <div class="row-2 px-3">
-            <p class="fs-4 fw-lighter my-5" id="parrafo">Estamos ubicados en el sur de ibague. <br> barrio boquero .... </p>
+            <p class="fs-4 fw-lighter my-5" id="parrafo">Estamos ubicados en el sur de ibague. <br> Barrio Boqueron.... </p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15912.071135093156!2d-75.27377476739471!3d4.407771243045708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38dcb156a69f67%3A0x9e297f873344ef48!2sBoqueron%2C%20Ibagu%C3%A9%2C%20Tolima!5e0!3m2!1ses!2sco!4v1666737415803!5m2!1ses!2sco" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       

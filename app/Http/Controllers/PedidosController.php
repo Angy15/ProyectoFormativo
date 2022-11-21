@@ -6,6 +6,7 @@ use App\Models\Pedidos;
 use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Gate;
 use Auth;
 
 class PedidosController extends Controller
@@ -78,6 +79,7 @@ class PedidosController extends Controller
         $cantidad = $request->cantidad;
         $productos2_id = $request->productos2_id;
         $cantidad2 = $request->cantidad2;
+        $estado = $request->estado;
 
         Pedidos::create($request->all());
         return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
@@ -96,14 +98,14 @@ class PedidosController extends Controller
         $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
                                         ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
                                                     'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
-                                                    'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos')
+                                                    'pedidos.productos2_id', 'pedidos.cantidad2','pedidos.estado', 'productos.tipo as productos')
                                                     ->where('pedidos.id',$id)
                                                     ->first();
 
         $pedidos2 = Pedidos::join('productos', 'pedidos.productos2_id',  'productos.id')
                                         ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
                                                         'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
-                                                        'pedidos.productos2_id', 'pedidos.cantidad2', 'productos.tipo as productos2')
+                                                        'pedidos.productos2_id', 'pedidos.cantidad2','pedidos.estado', 'productos.tipo as productos2')
                                                         ->where('pedidos.id',$id)
                                                         ->first();
 
@@ -121,6 +123,16 @@ class PedidosController extends Controller
     {
         //
         $pedidos = Pedidos::findOrFail($id);
+        if(Gate::denies('administrador'))
+        {
+            if($pedidos->estado=="En proceso")
+            {
+                return redirect()->route('pedidos.index');
+            }
+        }
+
+
+    
         $productos = Producto::orderBy('tipo', 'asc')->get();
         return view('pedidos.edit', compact('pedidos', 'productos'));
     }
@@ -134,7 +146,6 @@ class PedidosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $pedidos = Pedidos::findOrFail($id);
 
         $pedidos->update($request->all());
@@ -142,6 +153,17 @@ class PedidosController extends Controller
 
     }
 
+    public function updateEstado(Request $request,$id)
+    {
+
+        // dd($id);
+        $pedido = Pedidos::find($id);
+        $pedido->estado = $request->estado;
+        $pedido->save();
+
+        return redirect()->route('pedidos.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
+    }
+ 
     /**
      * Remove the specified resource from storage.
      *
@@ -151,6 +173,15 @@ class PedidosController extends Controller
     public function destroy($id)
     {
         //
+        $pedidos = Pedidos::findOrFail($id);
+        if(Gate::denies('administrador'))
+        {
+            if($pedidos->estado=="En proceso")
+            {
+                return redirect()->route('pedidos.index');
+            }
+        }
+
         $pedidos = Pedidos::findOrFail($id);
 
         $pedidos->delete();

@@ -24,6 +24,7 @@ class CreatePedidosTable extends Migration
             $table->integer('cantidad');
             $table->foreignId('productos2_id')->constrained('productos')->nullable();
             $table->integer('cantidad2')->nullable();
+            $table->string('estado');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -42,6 +43,9 @@ class CreatePedidosTable extends Migration
         });
         Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign('pedidos_user_id_foreign');
+        });
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropForeign('pedidos_estado_id_foreign');
         });
     }
 }

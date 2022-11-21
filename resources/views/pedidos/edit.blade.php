@@ -54,7 +54,6 @@
         <input type="number" class="form-control" id="cantidad2" name="cantidad2" placeholder="cantidad2" value="{{ $pedidos->cantidad2 }}">
         <label for="cantidad2">Cantidad de masa producto 2</label>
     </div>
-
     <a href="{{ route('pedidos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
     <button type="submit" class="btn btn-outline-secondary">Guardar</button> 
 </form>

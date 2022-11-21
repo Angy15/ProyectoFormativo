@@ -18,7 +18,8 @@ class Pedidos extends Model
     'productos_id',
     'cantidad',
     'productos2_id',
-    'cantidad2'
+    'cantidad2',
+    'estado'
 
     ];
 }

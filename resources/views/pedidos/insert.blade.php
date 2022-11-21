@@ -68,6 +68,11 @@
             <input type="number" class="form-control" id="cantidad2" name="cantidad2" placeholder="cantidad2">
             <label for="cantidad2">Cantidad de masa producto 2</label>
         </div>
+        <div class="form-floating mb-3">
+            <input type="hidden" class="form-control" id="estado" name="estado"  value="En espera" required>
+            <label for="estado"></label>
+        </div>
+
         <a href="{{ route('pedidos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
         <button type="submit" class="btn btn-outline-secondary">Guardar</button>
     </form>

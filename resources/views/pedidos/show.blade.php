@@ -39,6 +39,10 @@
                         <td>Cantidad 2</td>
                         <td>{{ $pedidos->cantidad2 }}</td>
                     </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td>{{ $pedidos->estado }}</td>
+                    </tr>
 
                 
                 </table>

@@ -49,22 +49,32 @@
                 </td>
                 @if (Auth::user()->hasRol("Administrador"))
                 <td>
-                    <select class="form-select"  id="estados" name="estados" aria-label="Default select example">
-                        <option selected name="opciones" disabled>Estado de pedido</option>
-                        <option name="aceptado" value="1">Aceptado</option>
-                        <option name="enProceso" value="2">En proceso</option>
-                        <option name="despachado" value="3">Despachado</option>
-                    </select>
+                    <form action="{{ route('pedidos.updateEstado', $item->id)}}" method="POST">
+                        @method('PUT')
+                        @csrf
+                    
+                        <select class="form-select"  id="estado" name="estado" aria-label="Default select example">                                
+                            <option selected value="" id="Estado" name="Estado" disabled>Estado de pedido</option>
+                            <option name="Aceptado" value="Aceptado" @if($item->estado=="Aceptado") selected @endif>Aceptado</option>
+                            <option name="En proceso" value="En proceso" @if($item->estado=="En proceso") selected @endif>En proceso</option>
+                            <option name="Despachado" value="Despachado" @if($item->estado=="Despachado") selected @endif>Despachado</option>
+                        </select>
+                        <div class="mt-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-circle-check"></i></button> 
+                        </div>
+                    </form>
                 </td>
                 @else
                 <td>
-                    <select class="form-select" id="estadosU" name="estadosU" aria-label="Default select example" disabled>
-                        <option selected value="selected"></option>
-                    </select>
+                    <p>{{$item->estado}}</p>
+                    {{-- <select class="form-select" id="estadosU" name="estadosU" aria-label="Default select example" disabled>
+                        <option selected value="selected">{{$item->estado}}</option>
+                    </select> --}}
                 </td> 
                 @endif
             </tr>
-        @endforeach
+            @endforeach
+            
         </tbody>
     </table>
 </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\EstadoController;
 
 
 /*
@@ -26,9 +27,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
 require __DIR__.'/auth.php';
 
 Route::get('/', [FrontController::class, 'index']);
+
 
 Route::resource('productos',ProductoController::class)->middleware('auth');
 
@@ -36,7 +39,14 @@ Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
 
+Route::resource('estados', EstadoController::class)->middleware('auth');
+
+Route::put('/pedidos/estado/{id}' ,[PedidosController::class, 'updateEstado'])->name('pedidos.updateEstado')->middleware('auth');
+
+
 Route::resource('welcome', FrontController::class);
+
+
 
 
     
