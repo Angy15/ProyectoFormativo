@@ -26,7 +26,6 @@
                     <tr>
                         <th>Tipo de masa</th>
                         <th>Descripción</th>
-
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -48,6 +47,7 @@
                             </form> 
                                 @endcan
                             </td>
+                      
                         </tr>
                     @endforeach
                 </tbody>

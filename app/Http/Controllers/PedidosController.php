@@ -27,8 +27,6 @@ class PedidosController extends Controller
         
         $dd = auth()->user()->id;
 
-        
-        
         if(Auth::user()->hasRol("Administrador")){
             
             $pedidoUsuario = Pedidos::all();
@@ -36,17 +34,13 @@ class PedidosController extends Controller
 
         }
             $pedidos = Pedidos::findOrFail($id);
-
             $pedidoUsuario = Pedidos::where("user_id", $dd)
             ->get();
-       
-    
-    
+
         // $user = User::where('user_id',auth()->user()->id)->get();
          // enviar a la vista para mostras los productos
-       
-
          return view('pedidos.index', compact("pedidos","usuarios","pedidoUsuario"));
+         
     }
 
     /**
@@ -95,6 +89,9 @@ class PedidosController extends Controller
     public function show($id)
     {
         //
+
+
+
         $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
                                         ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
                                                     'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
@@ -102,14 +99,9 @@ class PedidosController extends Controller
                                                     ->where('pedidos.id',$id)
                                                     ->first();
 
-        $pedidos2 = Pedidos::join('productos', 'pedidos.productos2_id',  'productos.id')
-                                        ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
-                                                        'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
-                                                        'pedidos.productos2_id', 'pedidos.cantidad2','pedidos.estado', 'productos.tipo as productos2')
-                                                        ->where('pedidos.id',$id)
-                                                        ->first();
 
-        return view('pedidos.show', compact('pedidos', 'pedidos2'));
+
+        return view('pedidos.show', compact('pedidos'));
         
     }
 
@@ -126,6 +118,10 @@ class PedidosController extends Controller
         if(Gate::denies('administrador'))
         {
             if($pedidos->estado=="En proceso")
+            {
+                return redirect()->route('pedidos.index');
+            }
+            elseif($pedidos->estado=="Despachado")
             {
                 return redirect()->route('pedidos.index');
             }
@@ -177,6 +173,10 @@ class PedidosController extends Controller
         if(Gate::denies('administrador'))
         {
             if($pedidos->estado=="En proceso")
+            {
+                return redirect()->route('pedidos.index');
+            }
+            elseif($pedidos->estado=="Despachado")
             {
                 return redirect()->route('pedidos.index');
             }

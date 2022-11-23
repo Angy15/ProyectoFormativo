@@ -39,6 +39,8 @@ Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
 
+Route::resource('informes', PedidosController::class)->middleware('auth');
+
 Route::resource('estados', EstadoController::class)->middleware('auth');
 
 Route::put('/pedidos/estado/{id}' ,[PedidosController::class, 'updateEstado'])->name('pedidos.updateEstado')->middleware('auth');

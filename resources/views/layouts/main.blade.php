@@ -49,8 +49,19 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house text-white"></i></div>
                                 Inicio
                             </a>
-                            @can(['administrador'])
                             <div class="sb-sidenav-menu-heading">Acciones</div>
+                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-cart-shopping "></i></div>
+                                Pedidos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link text-white" href="{{ route('pedidos.create') }}"><i class="fa-sharp fa-solid fa-plus pe-2"></i>Crear nuevo</a>
+                                    <a class="nav-link text-white" href="{{ route('pedidos.index') }}"><i class="fa-sharp fa-solid fa-list pe-2"></i>Listar</a>
+                                </nav>
+                            </div>
+                            @can(['administrador'])
                             <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                                 Productos
@@ -80,21 +91,15 @@
                                     @endcan
                                 </nav>
                             </div>
-                            
-                            <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-cart-shopping "></i></div>
-                                Pedidos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+
+                            @can(['administrador'])
+                            <a class="nav-link text-white" href="{{ route('informes.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-house text-white"></i></div>
+                                Informes
                             </a>
-                            <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link text-white" href="{{ route('pedidos.create') }}"><i class="fa-sharp fa-solid fa-plus pe-2"></i>Crear nuevo</a>
-                                    <a class="nav-link text-white" href="{{ route('pedidos.index') }}"><i class="fa-sharp fa-solid fa-list pe-2"></i>Listar</a>
-                                </nav>
-                            </div>
-                        
+                            @endcan
                             
-                           
+                            
                 </nav>
             </div>
             <div id="layoutSidenav_content">

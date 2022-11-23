@@ -17,7 +17,7 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Gate::denies('administrador'))
         {
@@ -25,8 +25,16 @@ class UsuariosController extends Controller
             return redirect()->route('usuarios.index');
 
         }
+        if($request)
+        {
+            $query = $request->buscar;
+            $usuarios = User::where('name','like','%'. $query . '%')
+                                ->orderBy('name','asc')
+                                ->paginate(5);
+            return view('usuario.index', compact('usuarios','query'));
+        }
         $usuarios = User::orderBy('name', 'asc')
-                        ->get();
+                        ->paginate(5);
         return view('usuario.index', compact('usuarios'));
     }
 
@@ -57,9 +65,11 @@ class UsuariosController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('usuario.show', compact('user'));
     }
 
     /**

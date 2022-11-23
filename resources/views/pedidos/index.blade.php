@@ -18,7 +18,6 @@
 
     
 <div class="my-3 text-center">
- 
     <table class="table table-hover">
         <thead>
             <tr>
@@ -38,31 +37,69 @@
                 <td>{{ $item->apellido }}</td>
                 <td>{{ $item->direccion }}</td>
 
-                <td class="">
+                <td class="d-flex justify-content-center">
                     <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
-                        </form>
+                    @if($item->estado=="En proceso")  
+
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-secondary justify-content-start rounded-circle disabled" aria-disabled="true"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-secondary rounded-circle disabled" aria-disabled="true"><i class="fa-solid fa-trash-can"></i></button>
+                    </form> 
+
+                    @elseif ($item->estado=="Despachado")
+
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-secondary justify-content-start me-1 rounded-circle disabled"  aria-disabled="true"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-secondary rounded-circle disabled" aria-disabled="true"><i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+
+                    @elseif ($item->estado=="Aceptado")
+                     
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+
+                    @elseif ($item->estado=="En espera")
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can"></i></button>
+                    @endif
+
+                    
                 </td>
                 @if (Auth::user()->hasRol("Administrador"))
-                <td>
-                    <form action="{{ route('pedidos.updateEstado', $item->id)}}" method="POST">
-                        @method('PUT')
-                        @csrf
-                    
-                        <select class="form-select"  id="estado" name="estado" aria-label="Default select example">                                
-                            <option selected value="" id="Estado" name="Estado" disabled>Estado de pedido</option>
-                            <option name="Aceptado" value="Aceptado" @if($item->estado=="Aceptado") selected @endif>Aceptado</option>
-                            <option name="En proceso" value="En proceso" @if($item->estado=="En proceso") selected @endif>En proceso</option>
-                            <option name="Despachado" value="Despachado" @if($item->estado=="Despachado") selected @endif>Despachado</option>
-                        </select>
-                        <div class="mt-2 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-circle-check"></i></button> 
-                        </div>
-                    </form>
+                <div class="container">
+                    <td>
+                        <form action="{{ route('pedidos.updateEstado', $item->id)}}" method="POST">
+                            @method('PUT')
+                            @csrf
+                            <div class="row justify-content-center">
+                                <div class="col-7">
+                                    <select class="form-select justify-content-center"  id="estado" name="estado" aria-label="Default select example">                                
+                                        <option selected value="" id="Estado" name="Estado" disabled>Estado de pedido</option>
+                                        <option name="Aceptado" value="Aceptado" @if($item->estado=="Aceptado") selected @endif>Aceptado</option>
+                                        <option name="En proceso" value="En proceso" @if($item->estado=="En proceso") selected @endif>En proceso</option>
+                                        <option name="Despachado" value="Despachado" @if($item->estado=="Despachado") selected @endif>Despachado</option>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <div class="d-flex justify-content-start">
+                                        <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-circle-check"></i></button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                </div>
                 </td>
                 @else
                 <td>
@@ -78,7 +115,12 @@
         </tbody>
     </table>
 </div>
-
+{{-- Función actualizar --}}
+<script type="text/javascript">
+function actualizar(){location.reload(true);}
+//Función para actualizar cada 5 minutos(50000 milisegundos)
+setInterval("actualizar()",50000);
+</script>
 @endsection
 @section('scripts')
     <script src="{{ asset('js/jquery.min.js') }}"></script>

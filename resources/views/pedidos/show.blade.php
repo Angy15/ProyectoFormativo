@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <td>Cantidad 1</td>
-                        <td>{{ $pedidos->cantidad }}</td>
+                        <td>{{ $pedidos->cantidad }} lb.</td>
                     </tr>
                     <tr>
                         <td>Producto 2</td>
@@ -37,15 +37,15 @@
                     </tr>
                     <tr>
                         <td>Cantidad 2</td>
-                        <td>{{ $pedidos->cantidad2 }}</td>
+                        <td>{{ $pedidos->cantidad2 }} lb.</td>
                     </tr>
                     <tr>
                         <td>Estado</td>
                         <td>{{ $pedidos->estado }}</td>
                     </tr>
-
-                
+                   
                 </table>
+
                 <a href="{{ route('pedidos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
             </div>
 
