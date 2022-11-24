@@ -3,53 +3,57 @@
 @section('titulo', 'Detalle del pedido')
 
 @section('content')
-
-            <div class="col-md-6">
-                
-                <table class="table table-bordered">
-                        <tr>
-                            <td>Nombre</td>
-                            <td>{{ $pedidos->nombre }}</td>
-                        </tr>
-                        <tr>
-                        <td>Apellido</td>
-                        <td>{{ $pedidos->apellido }}</td>
-                    </tr>
-                    <tr>
-                        <td>Teléfono</td>
-                        <td>{{ $pedidos->telefono }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dirección</td>
-                        <td>{{ $pedidos->direccion }}</td>
-                    </tr>
-                    <tr>
-                        <td>Producto 1</td>
-                        <td>{{ $pedidos->productos }}</td>
-                    </tr>
-                    <tr>
-                        <td>Cantidad 1</td>
-                        <td>{{ $pedidos->cantidad }} lb.</td>
-                    </tr>
-                    <tr>
-                        <td>Producto 2</td>
-                        <td>{{ $pedidos->productos2}}</td>
-                    </tr>
-                    <tr>
-                        <td>Cantidad 2</td>
-                        <td>{{ $pedidos->cantidad2 }} lb.</td>
-                    </tr>
-                    <tr>
-                        <td>Estado</td>
-                        <td>{{ $pedidos->estado }}</td>
-                    </tr>
-                   
-                </table>
-
-                <a href="{{ route('pedidos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <td>Nombre</td>
+                <td>{{ $pedidos->nombre }}</td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td>{{ $pedidos->apellido }}</td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td>{{ $pedidos->telefono }}</td>
+            </tr>
+            <tr>    
+                <td>Dirección</td>
+                <td>{{ $pedidos->direccion }}</td>
+            </tr>
+            <tr>
+                <td>Producto 1</td>
+                <td>{{ $pedidos->productos }}</td>
+            </tr>
+            <tr>
+                <td>Cantidad 1</td>
+                <td>{{ $pedidos->cantidad }} libras</td>
+            </tr>
+            <tr>
+                <td>Producto 2</td>
+                <td>{{ $pedidos->productos2}}</td>
+            </tr>
+            <tr>
+                <td>Cantidad 2</td>
+                <td>{{ $pedidos->cantidad2 }} libras</td>
+            </tr>
+            <tr>
+                <td>Estado</td>
+                <td>{{ $pedidos->estado }}</td>
+            </tr>
+        </table>
+        <a href="{{ route('pedidos.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+    <div class="col-md-6 align-self-center">
+        <div class="card text-center" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">Precio Total:</h5>
+                <a href="#" class="btn btn-success">0</a>
             </div>
-
-
+        </div>
+    </div>
+</div>
 
 @endsection
 

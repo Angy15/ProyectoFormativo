@@ -93,10 +93,8 @@
                             </div>
 
                             @can(['administrador'])
-                            <a class="nav-link text-white" href="{{ route('informes.index') }}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-house text-white"></i></div>
-                                Informes
-                            </a>
+
+                            <a class="nav-link text-white" href="{{ route('informes.index') }}">Informes</a>
                             @endcan
                             
                             

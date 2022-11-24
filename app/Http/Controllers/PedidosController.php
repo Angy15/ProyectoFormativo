@@ -41,7 +41,11 @@ class PedidosController extends Controller
          // enviar a la vista para mostras los productos
          return view('pedidos.index', compact("pedidos","usuarios","pedidoUsuario"));
          
+
+
+        
     }
+
 
     /**
      * Show the form for creating a new resource.
