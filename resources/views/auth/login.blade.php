@@ -1,9 +1,9 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="container">
-    <div class="content">
-        <img src="{{ asset('images/logo.png') }}" alt="logo" class="logo position-absolute top-3 start-50 translate-middle mt-1">
+<div class="container1">
+    <div class="content1">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class="logo1 position-absolute top-3 start-50 translate-middle mt-1">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     

@@ -18,12 +18,17 @@ class CreatePedidosTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('tipoIdentificacion');
+            $table->string('numIdentificacion');
             $table->string('telefono');
             $table->string('direccion');
             $table->foreignId('productos_id')->constrained('productos');
             $table->integer('cantidad');
             $table->foreignId('productos2_id')->constrained('productos')->nullable();
             $table->integer('cantidad2')->nullable();
+            $table->integer('precioUni1')->nullable();
+            $table->integer('precioUni2')->nullable();
+            $table->integer('precioTotal')->nullable();
             $table->string('estado');
             $table->timestamps();
             $table->softDeletes();

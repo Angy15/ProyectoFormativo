@@ -31,8 +31,8 @@
                     <tr>
                         <td>{{ $item->name}}</td>
                         <td class="d-flex">
-                            <a href="{{ route('usuarios.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                            <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="{{ route('usuarios.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye fa-beat"></i></a>
+                            <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square fa-beat"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -44,8 +44,8 @@
         @endif
     </div>
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="buscar">
-        <button class="btn btn-secondary" type="submit">Buscar</button>
+        <input class="form-control me-2 shadow" type="search" placeholder="Buscar..." name="buscar" aria-label="buscar">
+        <button class="btn btn-secondary shadow" type="submit">Buscar</button>
     </form>
 </div>
 

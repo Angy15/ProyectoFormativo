@@ -33,6 +33,17 @@ class PedidosController extends Controller
             return view('pedidos.index', compact("pedidoUsuario"));
 
         }
+        if($request)
+        {
+            $query = $request->buscar;
+            $pedidos = User::where('numIdentificacion','like','%'. $query . '%')
+                                ->orderBy('name','asc')
+                                ->paginate(5);
+            return view('pedidos.index', compact('pedidoUsuario','query'));
+        }
+        $usuarios = User::orderBy('name', 'asc')
+                        ->paginate(5);
+        return view('pedidos.index', compact("pedidoUsuario"));
             $pedidos = Pedidos::findOrFail($id);
             $pedidoUsuario = Pedidos::where("user_id", $dd)
             ->get();
@@ -71,6 +82,8 @@ class PedidosController extends Controller
         $user_id = $request->user_id;
         $nombre = $request->nombre;
         $apellido = $request->apellido;
+        $tipoIdentificacion = $request->tipoIdentificacion;
+        $numIdentificacion = $request->numIdentificacion;
         $telefono = $request->telefono;
         $direccion = $request->direccion;
         $productos_id = $request->productos_id;
@@ -97,9 +110,9 @@ class PedidosController extends Controller
 
 
         $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
-                                        ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido', 'pedidos.telefono',
+                                        ->select('pedidos.id', 'pedidos.nombre', 'pedidos.apellido','pedidos.tipoIdentificacion', 'pedidos.numIdentificacion', 'pedidos.telefono',
                                                     'pedidos.direccion', 'pedidos.productos_id', 'pedidos.cantidad', 
-                                                    'pedidos.productos2_id', 'pedidos.cantidad2','pedidos.estado', 'productos.tipo as productos')
+                                                    'pedidos.productos2_id', 'pedidos.cantidad2','pedidos.estado', 'productos.tipo as productos', 'productos.precio as precioUni1')
                                                     ->where('pedidos.id',$id)
                                                     ->first();
 

@@ -13,12 +13,17 @@ class Pedidos extends Model
     'user_id',
     'nombre',
     'apellido',
+    'tipoIdentificacion',
+    'numIdentificacion',
     'telefono',
     'direccion',
     'productos_id',
     'cantidad',
     'productos2_id',
     'cantidad2',
+    'precioUni1',
+    'precioUni2',
+    'precioTotal',
     'estado'
 
     ];

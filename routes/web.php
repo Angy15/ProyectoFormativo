@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\InformesController;
+use App\Http\Controllers\DetallePedidoController;
 
 // use App\Http\Controllers\EstadoController;
 
@@ -41,6 +42,9 @@ Route::resource('productos',ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
+
+Route::resource('detallePedido', DetallePedidoController::class)->middleware('auth');
+
 
 Route::put('/pedidos/estado/{id}' ,[PedidosController::class, 'updateEstado'])->name('pedidos.updateEstado')->middleware('auth');
 

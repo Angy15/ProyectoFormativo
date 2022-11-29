@@ -1,40 +1,31 @@
-body
-{
-    background-size: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(../images/maizal.jpg);
-}
-button
-{
-    margin-left: 10px;
-}
-.logo1
+.logo2
 {
     position: relative;
-    width: 60%;
-    height: 60%;
+    width: 55%;
+    height: 55%;
     /* left: 80% auto; */
-    top: -17%;
+    top: -10%;
     /* transform: translate(-50, -50); */
     display: flex;
 }
-.container1
+.container2
 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
 }
 
-.content1 {
+.content2 
+{
     max-width: 960px;
     width: 38%;
-    height: 70vh;
+    height: auto;
     margin-top: 14%;
     box-shadow: 10px 25px 25px 25px rgba(0, 0, 0, 0.575);
     background-color: #fff;
     border-radius: 15px;
     padding: 2rem;
     position: relative;
+
 }
-
-

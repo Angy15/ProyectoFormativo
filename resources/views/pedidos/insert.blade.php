@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" value="{{ auth()->user()->name }}" required>
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombres</label>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -24,6 +24,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Identificación</label>
+            <select class="form-select" name="tipoIdentificacion" id="tipoIdentificacion">
+                <option selected>Seleccione...</option>
+                <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                <option value="Extranjera">Extranjera</option>
+            </select>
+            <input type="text" id="numIdentificacion" name="numIdentificacion" class="form-control" aria-label="Text input with dropdown button" minlength="10" maxlength="10">
+        </div>
+
         <div class="row">
             <div class="col-sm-8">
                 <div class="form-floating mb-3">

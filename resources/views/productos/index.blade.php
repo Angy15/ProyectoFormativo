@@ -6,13 +6,13 @@
 
 @if($mensaje = Session::get('exito'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <p>|{{ $mensaje }}</p>
+        <p>{{ $mensaje }}</p>
         <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
     <div class="mt-3">
         @can(['administrador']) 
-        <a href="{{ route('productos.create') }}" class="btn btn-secondary">
+        <a href="{{ route('productos.create') }}" class="btn btn-secondary shadow">
             Crear nuevo producto
         </a>
         @endcan
@@ -36,14 +36,14 @@
                         <td>{{ $item->tipo}}</td>
                         <td>{{ $item->descripcion}}</td>
                         <td class="d-flex">
-                            <a href="{{ route('productos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{{ route('productos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye fa-beat"></i></a>
                                 @can(['administrador'])
-                                <a href="{{ route('productos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{ route('productos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square fa-beat"></i></a>
                                 <form action="{{ route('productos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="submit" class="btn btn-danger rounded-circle"><i class="fa-solid fa-trash-can fa-beat"></i></button>
                             </form> 
                                 @endcan
                             </td>

@@ -11,7 +11,7 @@
 @endif
 
     <div class="mt-3">
-        <a href="{{ route('pedidos.create') }}" class="btn btn-secondary">
+        <a href="{{ route('pedidos.create') }}" class="btn btn-secondary shadow">
             Crear nuevo pedido
         </a>
     </div>
@@ -38,7 +38,7 @@
                 <td>{{ $item->direccion }}</td>
 
                 <td class="d-flex justify-content-center">
-                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye fa-beat"></i></a>
                     @if($item->estado=="En proceso")  
 
                     <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-secondary justify-content-start rounded-circle disabled" aria-disabled="true"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -59,19 +59,19 @@
 
                     @elseif ($item->estado=="Aceptado")
                      
-                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square fa-beat"></i></a>
                     <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can"></i></button>
+                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can fa-beat"></i></button>
                     </form>
 
                     @elseif ($item->estado=="En espera")
-                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a  href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square fa-beat"></i></a>
                     <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can"></i></button>
+                        <button type="submit" class="btn btn-danger rounded-circle" ><i class="fa-solid fa-trash-can fa-beat"></i></button>
                     @endif
 
                     
@@ -79,7 +79,7 @@
                 @if (Auth::user()->hasRol("Administrador"))
                 <div class="container">
                     <td>
-                        <form action="{{ route('pedidos.updateEstado', $item->id)}}" method="POST">
+                        <form action="{{ route('pedidos.updateEstado', $item->id)}}" method="POST" class="form-estados">
                             @method('PUT')
                             @csrf
                             <div class="row justify-content-center">
@@ -131,13 +131,32 @@ setInterval("actualizar()",50000);
             e.preventDefault();
             //Lanzar alerta de Sweetalert
             Swal.fire({
-                title: '¿Esta seguro de eliminar?',
-                text: "Esta acción no se podrá deshacer!",
+                title: '¿Está seguro de eliminar?',
+                text: "Ésta acción no se podrá deshacer!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#0d6efd',
                 cancelButtonColor: '#dc3545',
-                confirmButtonText: 'Si, eliminar!'
+                confirmButtonText: 'Sí, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+
+
+        $('.form-estados').submit(function(e){
+            e.preventDefault();
+            //Lanzar alerta de Sweetalert
+            Swal.fire({
+                title: '¿Está seguro de cambiar al nuevo estado?',
+                text: "¡Podrá volver a cambiar el estado!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0d6efd',
+                cancelButtonColor: '#dc3545',
+                confirmButtonText: 'Sí, cambiar!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.submit();

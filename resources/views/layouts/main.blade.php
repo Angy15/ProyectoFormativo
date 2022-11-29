@@ -86,7 +86,6 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     @can(['administrador'])
-                                    <a class="nav-link text-white" href="{{ route('usuarios.create') }}"><i class="fa-sharp fa-solid fa-plus pe-2"></i>Crear nuevo</a>
                                     <a class="nav-link text-white" href="{{ route('usuarios.index') }}"><i class="fa-sharp fa-solid fa-list pe-2"></i>Listar</a>
                                     @endcan
                                 </nav>
